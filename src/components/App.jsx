@@ -1,16 +1,26 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SharedLayout from './SharedLayout';
+import Home from './Home';
+import Movies from './Movies';
+import NotFound from './NotFound';
+import MovieDetails from './MovieDetails';
+import Cast from './Cast';
+import Reviews from './Reviews';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
