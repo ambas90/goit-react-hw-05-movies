@@ -1,19 +1,23 @@
-import { useNavigate, useParams, NavLink, Outlet } from 'react-router-dom';
+import { useNavigate, useParams, Outlet } from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const navigate = useNavigate();
   const { filmData } = useFilms(`movie/${movieId}`);
-  const handleGoBack = () => {
-    navigate('/');
+
+  const handleClick = evt => {
+    navigate(evt.target.value);
   };
+
   console.log(filmData);
   const { title, release_date, overview, genres, vote_average, poster_path } =
     filmData;
   return (
     <div>
-      <button onClick={handleGoBack}>Go back</button>
+      <button value="/" onClick={handleClick}>
+        Go back
+      </button>
       <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} alt="" />
       <h2>
         {title} {release_date?.slice(0, 4)}
@@ -26,8 +30,13 @@ export default function MovieDetails() {
         <span key={gen.id}>{gen.name} </span>
       ))}
       <p>Additional information</p>
-      <NavLink to="Cast">Cast</NavLink>
-      <NavLink to="Reviews">Reviews</NavLink>
+
+      <button value="Cast" onClick={handleClick}>
+        Cast
+      </button>
+      <button value="Reviews" onClick={handleClick}>
+        Reviews
+      </button>
       <Outlet />
     </div>
   );
