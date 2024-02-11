@@ -3,7 +3,7 @@ import useFilms from 'hooks/useFilms';
 
 export default function Cast() {
   const { movieId } = useParams();
-  const { filmData } = useFilms(`movie/${movieId}/credits`);
+  const { filmData } = useFilms(`movie/${movieId}/credits?`);
 
   console.log(filmData);
   console.log(filmData.cast);
@@ -13,7 +13,7 @@ export default function Cast() {
         {filmData.cast?.map(actor => (
           <li key={actor.id}>
             <img
-              src={`https://image.tmdb.org/t/p/w400/${actor.profile_path}`}
+              src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
               alt=""
             />
             <h3>{actor.name}</h3>

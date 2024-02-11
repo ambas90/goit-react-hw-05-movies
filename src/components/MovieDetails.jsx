@@ -1,13 +1,24 @@
-import { useNavigate, useParams, Outlet } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+  Outlet,
+  useLocation,
+  Link,
+} from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const navigate = useNavigate();
-  const { filmData } = useFilms(`movie/${movieId}`);
+  const location = useLocation();
+  const { filmData } = useFilms(`movie/${movieId}?`);
 
   const handleClick = evt => {
     navigate(evt.target.value);
+  };
+
+  const handleGoBack = () => {
+    navigate(location.state?.from ?? '/');
   };
 
   console.log(filmData);
@@ -15,9 +26,7 @@ export default function MovieDetails() {
     filmData;
   return (
     <div>
-      <button value="/" onClick={handleClick}>
-        Go back
-      </button>
+      <button onClick={handleGoBack}>Go back</button>
       <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} alt="" />
       <h2>
         {title} {release_date?.slice(0, 4)}

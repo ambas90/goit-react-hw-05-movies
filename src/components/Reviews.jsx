@@ -3,7 +3,7 @@ import useFilms from 'hooks/useFilms';
 
 export default function Reviews() {
   const { movieId } = useParams();
-  const { filmData } = useFilms(`movie/${movieId}/reviews`);
+  const { filmData } = useFilms(`movie/${movieId}/reviews?`);
 
   console.log(filmData);
   return (

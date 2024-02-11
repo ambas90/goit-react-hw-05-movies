@@ -12,7 +12,7 @@ const useFilms = query => {
   useEffect(() => {
     const getFilms = async () => {
       setIsLoading(true);
-      const { data } = await axios.get(`${query}?${apiKey}`);
+      const { data } = await axios.get(`${query}${apiKey}`);
       setFilmList(data);
       setIsLoading(false);
       console.log(data);
