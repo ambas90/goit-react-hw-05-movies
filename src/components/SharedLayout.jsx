@@ -1,13 +1,17 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { AppWrapper, HeaderLink } from './SharedLayoutStyles';
 
 export default function SharedLayout() {
   return (
-    <div>
+    <AppWrapper>
       <header>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+        <HeaderLink to="/">Home</HeaderLink>
+        <HeaderLink to="/movies">Movies</HeaderLink>
       </header>
-      <Outlet />
-    </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
+    </AppWrapper>
   );
 }

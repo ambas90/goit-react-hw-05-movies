@@ -1,11 +1,12 @@
 import { useRef } from 'react';
-import {
-  useNavigate,
-  useSearchParams,
-  Link,
-  useLocation,
-} from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
+import {
+  FilmLink,
+  MoviesFormInput,
+  MoviesFormUi,
+  MoviesSearchButton,
+} from './MoviesStyles';
 
 export default function Movies() {
   const inputRef = useRef();
@@ -28,17 +29,21 @@ export default function Movies() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search movies" ref={inputRef}></input>
-        <button type="submit">Search</button>
-      </form>
+      <MoviesFormUi onSubmit={handleSubmit}>
+        <MoviesFormInput
+          type="text"
+          placeholder="Search movies"
+          ref={inputRef}
+        ></MoviesFormInput>
+        <MoviesSearchButton type="submit">Search</MoviesSearchButton>
+      </MoviesFormUi>
       {films?.map(
         film =>
           query && (
             <p key={film.id}>
-              <Link to={`${film.id}`} state={{ from: location }}>
+              <FilmLink to={`${film.id}`} state={{ from: location }}>
                 {film.title}
-              </Link>
+              </FilmLink>
             </p>
           )
       )}

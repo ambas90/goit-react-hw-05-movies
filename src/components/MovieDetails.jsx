@@ -1,6 +1,6 @@
 import { useNavigate, useParams, Outlet, useLocation } from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
-
+import { MovieDetailsButton } from './MovieDetailsStyles';
 export default function MovieDetails() {
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function MovieDetails() {
     filmData;
   return (
     <div>
-      <button onClick={handleGoBack}>Go back</button>
+      <MovieDetailsButton onClick={handleGoBack}>Go back</MovieDetailsButton>
       <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} alt="" />
       <h2>
         {title} {release_date?.slice(0, 4)}
@@ -33,12 +33,12 @@ export default function MovieDetails() {
       ))}
       <p>Additional information</p>
 
-      <button value="Cast" onClick={handleClick}>
+      <MovieDetailsButton value="Cast" onClick={handleClick}>
         Cast
-      </button>
-      <button value="Reviews" onClick={handleClick}>
+      </MovieDetailsButton>
+      <MovieDetailsButton value="Reviews" onClick={handleClick}>
         Reviews
-      </button>
+      </MovieDetailsButton>
       <Outlet />
     </div>
   );

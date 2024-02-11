@@ -1,5 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
+import { FilmLink } from './HomeStyles';
 
 export default function Home() {
   const { filmData } = useFilms('trending/all/day?');
@@ -11,9 +12,9 @@ export default function Home() {
       <div>
         {films?.map(film => (
           <p key={film.id}>
-            <Link to={`movies/${film.id}`} state={{ from: location }}>
+            <FilmLink to={`movies/${film.id}`} state={{ from: location }}>
               {film.title}
-            </Link>
+            </FilmLink>
           </p>
         ))}
       </div>
