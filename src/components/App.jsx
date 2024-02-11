@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import Home from './Home';
 import Movies from './Movies';
-import NotFound from './NotFound';
 import MovieDetails from './MovieDetails';
 import Cast from './Cast';
 import Reviews from './Reviews';
