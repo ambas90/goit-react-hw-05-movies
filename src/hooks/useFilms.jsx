@@ -15,7 +15,6 @@ const useFilms = query => {
       const { data } = await axios.get(`${query}${apiKey}`);
       setFilmList(data);
       setIsLoading(false);
-      console.log(data);
     };
     getFilms().catch(error => {
       setError(true);

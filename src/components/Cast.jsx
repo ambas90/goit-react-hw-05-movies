@@ -5,8 +5,6 @@ export default function Cast() {
   const { movieId } = useParams();
   const { filmData } = useFilms(`movie/${movieId}/credits?`);
 
-  console.log(filmData);
-  console.log(filmData.cast);
   return (
     <div>
       <ul>

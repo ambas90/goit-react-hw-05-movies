@@ -5,7 +5,6 @@ export default function Reviews() {
   const { movieId } = useParams();
   const { filmData } = useFilms(`movie/${movieId}/reviews?`);
 
-  console.log(filmData);
   return (
     <div>
       {filmData.total_results < 1 && <p>no reviews</p>}

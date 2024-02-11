@@ -1,10 +1,4 @@
-import {
-  useNavigate,
-  useParams,
-  Outlet,
-  useLocation,
-  Link,
-} from 'react-router-dom';
+import { useNavigate, useParams, Outlet, useLocation } from 'react-router-dom';
 import useFilms from 'hooks/useFilms';
 
 export default function MovieDetails() {
@@ -21,7 +15,6 @@ export default function MovieDetails() {
     navigate(location.state?.from ?? '/');
   };
 
-  console.log(filmData);
   const { title, release_date, overview, genres, vote_average, poster_path } =
     filmData;
   return (
