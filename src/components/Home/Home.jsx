@@ -9,15 +9,15 @@ export default function Home() {
   return (
     <div>
       <h1>Trending today</h1>
-      <div>
+      <ul>
         {films?.map(film => (
-          <p key={film.id}>
+          <li key={film.id}>
             <FilmLink to={`movies/${film.id}`} state={{ from: location }}>
               {film.title}
             </FilmLink>
-          </p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
